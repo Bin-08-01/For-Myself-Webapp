@@ -1,0 +1,31 @@
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #999;
+    padding: 1rem 1.5rem;
+}
+
+.navbar-container > * {
+    margin: 0 1.25rem;
+    text-decoration: none;
+    font-weight: 600;
+    color:rgb(0, 99, 230);
+}
+
+.navbar-home-container > *{
+    text-decoration: none;
+
+}
+
+.navbar-login-container > *{
+    margin: 0 1.2rem;
+    text-decoration: none;
+}
+
+.navbar-register{
+    background-color: rgb(150, 150, 150);
+    padding: 0.35rem;
+    border-radius: 6px;
+}
+
