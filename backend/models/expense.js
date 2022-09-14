@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ExpenseSchema = mongoose.Schema({
+const ExpenseSchema = new mongoose.Schema({
     dateAdd:{
         type: String,
         require: true,

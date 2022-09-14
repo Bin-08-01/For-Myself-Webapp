@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const cookieparser = require('cookie-parser');
 
 const routerAuth = require('./routes/auth');
-
+const routeLanguage = require('./routes/vocabulary');
+const routerUser = require('./routes/user');
 dotenv.config();
 const app = express();
 
@@ -20,5 +21,7 @@ app.use(express.json());
 
 //Route
 app.use('/v1/auth', routerAuth);
+app.use('/v1/user', routerUser);
+app.use('/v2/language', routeLanguage);
 
 app.listen(3000, () => console.log('Server is running ...'));

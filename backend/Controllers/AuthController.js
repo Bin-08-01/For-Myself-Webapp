@@ -50,6 +50,7 @@ const AuthController = {
 
     loginUser: async (req, res)=>{
         try{
+            console.log(1);
             const user = await User.findOne({ username: req.body.username });
             if(!user){
                 res.status(404).json("Not found this user");
@@ -64,18 +65,18 @@ const AuthController = {
             }
             const accessToken = await AuthController.generateAccessToken(user);
             const refreshToken = await AuthController.generateRefreshToken(user);
-
+            req.headers.token = [`bearer ${accessToken}`];
             refreshTokens.push(refreshToken);
-
             res.cookie("refreshToken", refreshToken, {
                 httpOnly: true,
                 secure: false,
                 path: '/',
                 sameSite: "strict",
             })
+            await res.setHeader('token', `Bearer ${accessToken}`);
             res.status(200).json({message: "Login successfully", user, accessToken, refreshToken});
         }catch(err){
-            console.log("Lỗi");
+            console.log(err);
         }
     },
 
