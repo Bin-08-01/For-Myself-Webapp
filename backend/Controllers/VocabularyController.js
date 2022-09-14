@@ -24,6 +24,29 @@ const VocabularyController = {
         } catch (err) {
             res.status(500).json(err);
         }
+    },
+    
+    updateVocabulary: async (req, res)=>{
+        try{
+            await Vocabulary.findByIdAndUpdate(req.params.id, {
+                original: req.body.original,
+                translate: req.body.translate,
+                description: req.body.description,
+            });
+            res.status(200).json("Update successfully");
+        }catch(err){
+            res.status(500).json(err);
+        }
+    }
+    ,
+
+    deleteVocabulary: async (req, res)=>{
+        try{
+            await Vocabulary.findByIdAndDelete({id: req.params.id});
+            res.status(200).json("Delete vocabulary successfully");
+        }catch(err){
+            res.status(500).json(err);
+        }
     }
 };
 

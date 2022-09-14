@@ -6,4 +6,8 @@ router.get('/view/:language',VocabularyController.getAllWords);
 
 router.post('/add/:language',VocabularyController.addVocabulary);
 
+router.post('/update/:id', VocabularyController.updateVocabulary);
+
+router.delete('/delete/:id', VocabularyController.deleteVocabulary);
+
 module.exports = router;
