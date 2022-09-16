@@ -12,7 +12,7 @@ const AuthController = {
                 admin: user.admin
             },
             process.env.KEY_ACCESS_TOKEN,
-            {expiresIn: '30s'}
+            {expiresIn: '30m'}
         )
     },
 
@@ -25,6 +25,33 @@ const AuthController = {
             process.env.KEY_REFRESH_TOKEN,
             {expiresIn: "30d"}
         )
+    },
+
+    requestRefreshToken: async(req, res)=>{
+        const refreshToken = req.cookies.refreshToken;
+        if (!refreshToken) return res.status(401).json("You're not authenticated");
+        if (!refreshTokens.includes(refreshToken)) {
+            return res.status(403).json("Refresh token is not valid");
+        }
+        jwt.verify(refreshToken, process.env.KEY_REFRESH_TOKEN, (err, user) => {
+            if (err) {
+                console.log(err);
+            }
+            refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
+            const newAccessToken = AuthController.generateAccessToken(user);
+            const newRefreshToken = AuthController.generateRefreshToken(user);
+            refreshTokens.push(newRefreshToken);
+            res.cookie("refreshToken", refreshToken, {
+                httpOnly: true,
+                secure:false,
+                path: "/",
+                sameSite: "strict",
+            });
+            res.status(200).json({
+                accessToken: newAccessToken,
+                refreshToken: newRefreshToken,
+            });
+        });
     },
 
     registerUser: async(req, res)=>{
@@ -50,31 +77,28 @@ const AuthController = {
 
     loginUser: async (req, res)=>{
         try{
-            console.log(1);
-            const user = await User.findOne({ username: req.body.username });
+            let user = await User.findOne({ username: req.body.username });
             if(!user){
                 res.status(404).json("Not found this user");
             }
-
-            const validPassword = await bcrypt.compare(
-                req.body.password,
-                user.password
-            )
-            if(!validPassword){
-                res.status(404).json("Wrong password");
+            else{
+                const validPassword = await bcrypt.compare(
+                    req.body.password,
+                    user.password
+                )
+                if(!validPassword){
+                    res.status(404).json("Wrong password");
+                }
+                const accessToken = await AuthController.generateAccessToken(user);
+                const refreshToken = await AuthController.generateRefreshToken(user);
+                res.cookie("refreshToken", refreshToken, {
+                    httpOnly: true,
+                    secure: false,
+                    path: '/',
+                    sameSite: "strict",
+                })
+                res.status(200).json({user, accessToken});
             }
-            const accessToken = await AuthController.generateAccessToken(user);
-            const refreshToken = await AuthController.generateRefreshToken(user);
-            req.headers.token = [`bearer ${accessToken}`];
-            refreshTokens.push(refreshToken);
-            res.cookie("refreshToken", refreshToken, {
-                httpOnly: true,
-                secure: false,
-                path: '/',
-                sameSite: "strict",
-            })
-            await res.setHeader('token', `Bearer ${accessToken}`);
-            res.status(200).json({message: "Login successfully", user, accessToken, refreshToken});
         }catch(err){
             console.log(err);
         }
@@ -82,8 +106,7 @@ const AuthController = {
 
     logoutUser: async (req, res)=>{
         res.clearCookie("refreshToken");
-        refreshTokens = refreshTokens.filter(token => token !== req.cookies.refreshToken);
-        res.status(200).json("Logout successfully");
+        res.status(200).json("Logged out successfully!");
     }
 }
 
