@@ -1,0 +1,48 @@
+.navbar-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #242526;
+    padding: 1rem 1.5rem;
+}
+
+.navbar-container > * {
+    margin: 0 1.25rem;
+    text-decoration: none;
+    font-weight: 600;
+    color:#E4E6EB;
+}
+
+.navbar-home-container > *{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.navbar-login-container > *{
+    margin: 0 1.2rem;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.navbar-login-success-container{
+    display: flex;
+    padding: 0 1.2rem;
+    justify-content: space-around;
+}
+
+.navbar-login-success-container > *{
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 1.2rem;
+}
+
+.navbar-user>span{
+    color: #999999;
+}
+
+.navbar-register{
+    background-color: rgb(150, 150, 150);
+    padding: 0.35rem;
+    border-radius: 6px;
+}
+

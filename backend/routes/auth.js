@@ -4,8 +4,10 @@ const MiddlewareController = require("../Controllers/MiddlewareController");
 
 router.post('/register', AuthController.registerUser);
 
-router.post('/login',AuthController.loginUser);
+router.post('/login', AuthController.loginUser);
 
 router.post('/logout', MiddlewareController.verifyToken, AuthController.logoutUser);
+
+router.post('/refresh', AuthController.requestRefreshToken);
 
 module.exports = router;
