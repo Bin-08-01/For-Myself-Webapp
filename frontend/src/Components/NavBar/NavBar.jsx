@@ -1,7 +1,7 @@
 import './navbar.css';
 import {Link, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {logoutUser} from "../../Redux/apiRequest";
+import {logoutUser} from "../../Redux/apiAuthRequest";
 import {createAxios} from "../../createInstance";
 import {logoutSuccess} from "../../Redux/authSlice";
 

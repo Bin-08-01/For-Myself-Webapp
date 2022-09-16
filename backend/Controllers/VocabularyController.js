@@ -1,10 +1,13 @@
 const Vocabulary = require('../models/vocabulary');
+const {request} = require("express");
+const axios = require('axios');
 
 const VocabularyController = {
     getAllWords: async (req, res) => {
         try{
-            const allVocabularies = await Vocabulary.find({language: req.params.language});
-            res.status(200).json(allVocabularies);
+            const idUser = req.body.idUser;
+            const allVocabularies = await Vocabulary.find({language: req.params.language, idUser});
+            res.status(200).json({allVocabularies, idUser});
         }catch(err){
             res.status(500).json(err);
         }
@@ -17,6 +20,7 @@ const VocabularyController = {
                 original: req.body.original,
                 translate: req.body.translate,
                 description: req.body.description,
+                idUser: req.body.idUser,
             });
 
             const vocabulary = await newVocabulary.save();

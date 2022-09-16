@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import authReducer from "./authSlice";
-import userReducer from "./userSlice";
+import vocabularyReducer from "./vocabularySlice";
 import {
     persistStore,
     persistReducer,
@@ -18,7 +18,7 @@ const persistConfig = {
     version: 1,
     storage,
 };
-const rootReducer = combineReducers({ auth: authReducer, users: userReducer });
+const rootReducer = combineReducers({ auth: authReducer, vocabulary: vocabularyReducer });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
