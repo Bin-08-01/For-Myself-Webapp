@@ -5,6 +5,8 @@ import NavBar from "./Components/NavBar/NavBar";
 import Login from "./Components/Login/Login";
 import RegisterPage from "./Components/Register/Register";
 import VocabularyPage from "./Components/Home/Vocabulary/vocabularyPage";
+import ShowAllVocabulary from "./Components/Home/Vocabulary/ShowAllVocabulary/showAllVocabulary";
+import AddVocabulary from "./Components/Home/Vocabulary/AddVocabulary/AddVocabulary";
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
                 <Route path={'/login'} element={<Login/>}/>
                 <Route path={'/register'} element={<RegisterPage/>}/>
                 <Route path={'/vocabulary'} element={<VocabularyPage/>}/>
-                {/*<Route path={'/home1'} element={<Home1/>}/>*/}
+                <Route path={'/view'} element={<ShowAllVocabulary/>}/>
+                <Route path={'/add'} element={<AddVocabulary/>}/>
+                <Route path={'/edit'} element={<AddVocabulary/>}></Route>
             </Routes>
         </div>
     </Router>

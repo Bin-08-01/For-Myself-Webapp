@@ -1,6 +1,4 @@
 const Vocabulary = require('../models/vocabulary');
-const {request} = require("express");
-const axios = require('axios');
 
 const VocabularyController = {
     getAllWords: async (req, res) => {
@@ -9,6 +7,16 @@ const VocabularyController = {
             const allVocabularies = await Vocabulary.find({language: req.params.language, idUser});
             res.status(200).json({allVocabularies, idUser});
         }catch(err){
+            res.status(500).json(err);
+        }
+    },
+
+    findOneWord: async (req, res)=>{
+        try {
+            const idWord = req.params.id;
+            const allVocabularies = await Vocabulary.findOne({_id: idWord});
+            res.status(200).json({allVocabularies});
+        }catch (err){
             res.status(500).json(err);
         }
     },
@@ -46,7 +54,7 @@ const VocabularyController = {
 
     deleteVocabulary: async (req, res)=>{
         try{
-            await Vocabulary.findByIdAndDelete({id: req.params.id});
+            await Vocabulary.findByIdAndDelete(req.params.id);
             res.status(200).json("Delete vocabulary successfully");
         }catch(err){
             res.status(500).json(err);

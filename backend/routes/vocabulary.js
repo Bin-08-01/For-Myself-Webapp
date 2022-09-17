@@ -10,4 +10,6 @@ router.post('/update/:id', VocabularyController.updateVocabulary);
 
 router.delete('/delete/:id', VocabularyController.deleteVocabulary);
 
+router.post('/search/:id', VocabularyController.findOneWord);
+
 module.exports = router;
