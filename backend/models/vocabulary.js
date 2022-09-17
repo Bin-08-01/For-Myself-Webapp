@@ -25,6 +25,11 @@ const vocabularySchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+
+    idUser: {
+        type: String,
+        require: true
+    }
 }, {timestamps: true});
 
 module.exports = mongoose.model("vocabulary", vocabularySchema);

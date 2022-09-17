@@ -1,6 +1,6 @@
 import './register.css';
 import {useState} from "react";
-import {registerUser} from "../../Redux/apiRequest";
+import {registerUser} from "../../Redux/apiAuthRequest";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 

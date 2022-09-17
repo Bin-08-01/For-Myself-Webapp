@@ -2,7 +2,7 @@ import './login.css';
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {loginUser} from "../../Redux/apiRequest";
+import {loginUser} from "../../Redux/apiAuthRequest";
 
 const Login = () => {
     const [username, setUsername] = useState("");

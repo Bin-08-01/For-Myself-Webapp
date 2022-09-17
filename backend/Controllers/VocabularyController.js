@@ -3,9 +3,20 @@ const Vocabulary = require('../models/vocabulary');
 const VocabularyController = {
     getAllWords: async (req, res) => {
         try{
-            const allVocabularies = await Vocabulary.find({language: req.params.language});
-            res.status(200).json(allVocabularies);
+            const idUser = req.body.idUser;
+            const allVocabularies = await Vocabulary.find({language: req.params.language, idUser});
+            res.status(200).json({allVocabularies, idUser});
         }catch(err){
+            res.status(500).json(err);
+        }
+    },
+
+    findOneWord: async (req, res)=>{
+        try {
+            const idWord = req.params.id;
+            const allVocabularies = await Vocabulary.findOne({_id: idWord});
+            res.status(200).json({allVocabularies});
+        }catch (err){
             res.status(500).json(err);
         }
     },
@@ -17,6 +28,7 @@ const VocabularyController = {
                 original: req.body.original,
                 translate: req.body.translate,
                 description: req.body.description,
+                idUser: req.body.idUser,
             });
 
             const vocabulary = await newVocabulary.save();
@@ -42,7 +54,7 @@ const VocabularyController = {
 
     deleteVocabulary: async (req, res)=>{
         try{
-            await Vocabulary.findByIdAndDelete({id: req.params.id});
+            await Vocabulary.findByIdAndDelete(req.params.id);
             res.status(200).json("Delete vocabulary successfully");
         }catch(err){
             res.status(500).json(err);
