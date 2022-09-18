@@ -22,6 +22,10 @@ const NavBar = () => {
             </div>
                 {user ? (
                     <div className="navbar-login-success-container">
+                        <div className="navbar-search-container">
+                            <input type="search" className={"navbar-search-input"}/>
+                            <i className="fa-solid fa-magnifying-glass icon-search"></i>
+                        </div>
                         <p className={"navbar-user"}>Hi, <span>{user.username}</span></p>
                         <Link to={'/logout'} className={"navbar-logout"} onClick={handleLogout}>Logout</Link>
                     </div>

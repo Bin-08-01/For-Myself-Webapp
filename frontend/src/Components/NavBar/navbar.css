@@ -1,4 +1,4 @@
-.navbar-container{
+.navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,39 +10,57 @@
     margin: 0 1.25rem;
     text-decoration: none;
     font-weight: 600;
-    color:#E4E6EB;
+    color: #E4E6EB;
 }
 
-.navbar-home-container > *{
+.navbar-home-container > * {
     text-decoration: none;
     color: #ffffff;
 }
 
-.navbar-login-container > *{
+.navbar-login-container > * {
     margin: 0 1.2rem;
     text-decoration: none;
     color: #ffffff;
 }
 
-.navbar-login-success-container{
+.navbar-login-success-container {
     display: flex;
     padding: 0 1.2rem;
     justify-content: space-around;
 }
 
-.navbar-login-success-container > *{
+.navbar-login-success-container > * {
     text-decoration: none;
     color: #ffffff;
     margin: 0 1.2rem;
 }
 
-.navbar-user>span{
+.navbar-user > span {
     color: #999999;
 }
 
-.navbar-register{
+.navbar-register {
     background-color: rgb(150, 150, 150);
     padding: 0.35rem;
     border-radius: 6px;
 }
 
+.navbar-search-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-search-container > .navbar-search-input {
+    width: 160px;
+    padding: 2px 6px 2px 24px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.navbar-search-container > .icon-search {
+    position: relative;
+    right: 154px;
+    color: #242526;
+}

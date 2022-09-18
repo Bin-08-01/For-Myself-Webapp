@@ -8,6 +8,14 @@ import {
     registerStart,
     registerSuccess
 } from "./authSlice";
+import {
+    deleteUsersFailed,
+    deleteUsersStart,
+    deleteUsersSuccess,
+    getUsersFailed,
+    getUsersStart,
+    getUsersSuccess
+} from "./userSlice";
 
 export const registerUser = async (user, dispatch, navigate) => {
     dispatch(registerStart());
@@ -43,3 +51,24 @@ export const logoutUser = async (dispatch, id, navigate, accessToken, axiosJWT) 
         dispatch(logoutFailed());
     }
 };
+
+export const getAllUsers = async (accessToken, dispatch, axiosJWT) => {
+    dispatch(getUsersStart());
+    try {
+        const res = await axios.get('/v1/user/all');
+        dispatch(getUsersSuccess(res.data));
+    }catch (err){
+        dispatch(getUsersFailed());
+    }
+};
+
+export const deleteUser = async (dispatch, navigate, id, axiosJWT)=>{
+    dispatch(deleteUsersStart());
+    try {
+        await axios.delete(`/v1/user/delete/${id}`);
+        dispatch(deleteUsersSuccess());
+        navigate("/");
+    }catch (err){
+        dispatch(deleteUsersFailed("Delete failed!"));
+    }
+}
