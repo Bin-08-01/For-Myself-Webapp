@@ -1,8 +1,9 @@
 import './login.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {loginUser} from "../../Redux/apiAuthRequest";
+import {resetSide} from "../../Redux/authSlice";
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -10,8 +11,10 @@ const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     // const user = useSelector(state => state.auth.login?.currentUser);
-    const msg = useSelector(state=>state.auth?.msg);
-
+    let msg = useSelector(state=>state.auth?.login.msg);
+    useEffect(()=>{
+        msg = "";
+    }, [msg===""]);
     const handleLogin = (e)=>{
         e.preventDefault();
         const user = {
@@ -22,18 +25,18 @@ const Login = () => {
     }
 
     return (
-        <section className={'login-container container-log'}>
-            <div className="login-title title-log">
+        <section className={'login-container'}>
+            <div className="login-title">
                 Log in
             </div>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleLogin} className={"form-login"}>
                 <label htmlFor="">Username</label>
                 <input type="text" name={"username"} placeholder={'Type your username'} onChange={e => setUsername(e.target.value)}/>
                 <span className={"navbar-error navbar-error-username"}></span>
                 <label htmlFor="">Password</label>
                 <input type="password" placeholder={'Type your password'} onChange={e => setPassword(e.target.value)}/>
-                <span className={"navbar-error navbar-error-password"}>{msg}</span>
-                <button type={"submit"}>Log in</button>
+                <span className={"text-login-error"}>{msg}</span>
+                <button type={"submit"} className={"button-login"}>Log in</button>
             </form>
         </section>
     )

@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {loginSuccess} from "../../Redux/authSlice";
 import {deleteUser, getAllUsers} from "../../Redux/apiAuthRequest";
 import {useEffect} from "react";
+import './adminhome.css';
 
 const AdminHomePage = () => {
     const user = useSelector((state)=>state.auth.login?.currentUser.user);
@@ -18,8 +19,11 @@ const AdminHomePage = () => {
     },[]);
 
     const handleDelete =(id)=>{
-        navigate('/deleteuser');
-        deleteUser(dispatch, navigate, id, axiosJWT);
+        const resl = window.confirm("Are you sure ?");
+        if(resl){
+            navigate('/deleteuser');
+            deleteUser(dispatch, navigate, id, axiosJWT);
+        }
     };
 
     return (
@@ -29,14 +33,41 @@ const AdminHomePage = () => {
                 {`Your role: ${user?.admin ? `Admin` : `User`}`}
             </div>
             <div className="home-userlist">
-                {userList?.map((severalUser) => {
-                    return (
-                        <div className="user-container" key={severalUser._id}>
-                            <div className="home-user"><h3>{severalUser.username}</h3><p>{severalUser.email}</p></div>
-                            <div className="delete-user" onClick={()=>handleDelete(severalUser._id)}> Delete </div>
-                        </div>
-                    );
-                })}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {userList?.map((severalUser) => {
+                        return (
+                            <tr>
+                                <td>
+                                    <div className="home-username"><h3>{severalUser.username}</h3></div>
+                                </td>
+                                <td>
+                                    <div className="home-email"><p>{severalUser.email}</p></div>
+                                </td>
+                                <td>
+                                    {severalUser.admin ? (
+                                        <div className={"home-role-user"}>Admin</div>
+                                    ):(
+                                        <div className={"home-role-user"}>User</div>
+                                    )}
+                                </td>
+                                <td>
+                                    <div className="delete-user" onClick={()=>handleDelete(severalUser._id)}> Delete </div>
+                                </td>
+                            </tr>
+                        );
+                    })}
+                    </tbody>
+                </table>
+
             </div>
             <div className="errorMsg">{msg}</div>
         </main>
