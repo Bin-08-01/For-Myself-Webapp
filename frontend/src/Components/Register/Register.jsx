@@ -28,7 +28,7 @@ const RegisterPage = () => {
             </div>
             <form onSubmit={handleRegister}>
                 <label htmlFor="">Email</label>
-                <input type="text" placeholder={'Type your email'} onChange={e => setEmail(e.target.value)}/>
+                <input type="text" name={"email"} placeholder={'Type your email'} onChange={e => setEmail(e.target.value)}/>
                 {/*<span className={"navbar-error navbar-error-classname"}></span>*/}
                 <label htmlFor="">Username</label>
                 <input type="text" placeholder={'Type your username'} onChange={e => setUsername(e.target.value)}/>
