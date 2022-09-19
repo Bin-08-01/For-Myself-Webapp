@@ -1,7 +1,7 @@
 import {useNavigate, useSearchParams} from "react-router-dom";
 import "./style.css";
 import {useDispatch, useSelector} from "react-redux";
-import {addVocabulary, findVocabulary, updateVocabulary} from "../../../../Redux/apiVocabularyRequest";
+import {addVocabulary, findVocabulary, updateVocabulary} from "../../Redux/apiVocabularyRequest";
 import {useState} from "react";
 
 const AddVocabulary = () => {
@@ -32,18 +32,20 @@ const AddVocabulary = () => {
         }
     }
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <h1>{idWord ? ("Edit") : (`Add Vocabulary ${searchParams.get('language')}`)}</h1>
-                <p>Original</p>
-                <input type="text" onChange={e => setOriginal(e.target.value)} placeholder={idWord?(`${vocabulary.original}`):("Original")}/>
-                <p>Translate</p>
-                <input type="text" name={'translate'} onChange={e => setTranslate(e.target.value)} placeholder={idWord?(`${vocabulary.translate}`):("Translated")}/>
-                <p>Description</p>
-                <input type="text" name={'description'} onChange={e => setDescription(e.target.value)} placeholder={idWord?(`${vocabulary.description}`): ('Description')}/>
-                <button type={"submit"}>{idWord ? ("Edit") : "Add"}</button>
-            </form>
-        </>
+        <div className={"add-vocabulary-container"}>
+            <div className={"form-add-vocabulary-container"}>
+                <form onSubmit={handleSubmit} className={"form-add-vocabulary"}>
+                    <h1 className={"title-form"}>{idWord ? ("Edit") : (`Add Vocabulary ${searchParams.get('language')}`)}</h1>
+                    <p>Original</p>
+                    <input type="text" onChange={e => setOriginal(e.target.value)} placeholder={idWord?(`${vocabulary.original}`):("Original")}/>
+                    <p>Translate</p>
+                    <input type="text" name={'translate'} onChange={e => setTranslate(e.target.value)} placeholder={idWord?(`${vocabulary.translate}`):("Translated")}/>
+                    <p>Description</p>
+                    <input type="text" name={'description'} onChange={e => setDescription(e.target.value)} placeholder={idWord?(`${vocabulary.description}`): ('Description')}/>
+                    <button type={"submit"}>{idWord ? ("Edit") : "Add"}</button>
+                </form>
+            </div>
+        </div>
     )
 };
 

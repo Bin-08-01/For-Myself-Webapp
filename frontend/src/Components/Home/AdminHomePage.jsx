@@ -37,6 +37,7 @@ const AdminHomePage = () => {
                     <thead>
                         <tr>
                             <th>Username</th>
+                            <th>Full Name</th>
                             <th>Email</th>
                             <th>Role</th>
                             <th>Delete</th>
@@ -48,6 +49,9 @@ const AdminHomePage = () => {
                             <tr>
                                 <td>
                                     <div className="home-username"><h3>{severalUser.username}</h3></div>
+                                </td>
+                                <td>
+                                    <div className={"home-fullname"}>{severalUser.fullname}</div>
                                 </td>
                                 <td>
                                     <div className="home-email"><p>{severalUser.email}</p></div>
