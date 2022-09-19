@@ -23,5 +23,6 @@ app.use(express.json());
 app.use('/v1/auth', routerAuth);
 app.use('/v1/user', routerUser);
 app.use('/v2/language', routeLanguage);
+app.use('/image', express.static('img'));
 
 app.listen(3107, () => console.log('Server is running ...'));

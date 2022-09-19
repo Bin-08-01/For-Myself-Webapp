@@ -1,0 +1,41 @@
+.add-vocabulary-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.form-add-vocabulary-container{
+    padding: 40px;
+    background-color: #999999;
+    border-radius: 20px;
+}
+
+.form-add-vocabulary>.title-form{
+    font-weight: 600;
+}
+
+.form-add-vocabulary-container>.form-add-vocabulary{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-add-vocabulary>p{
+    margin: 20px 0 10px;
+}
+
+.form-add-vocabulary>input{
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    width: 360px;
+}
+
+.form-add-vocabulary>button{
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+}

@@ -6,7 +6,9 @@
     margin: 0;
 }
 
-.App{
-    display: flex;
-    justify-content: center;
+.App>*{
+    /*display: flex;*/
+    /*justify-content: center;*/
+    margin-top: 64px;
+    font-family: 'Poppins', sans-serif;
 }

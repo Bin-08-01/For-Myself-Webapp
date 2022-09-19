@@ -1,9 +1,15 @@
 .navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #242526;
     padding: 1rem 1.5rem;
+    max-height: 50px;
 }
 
 .navbar-container > * {
@@ -16,6 +22,7 @@
 .navbar-home-container > * {
     text-decoration: none;
     color: #ffffff;
+    margin: 0 12px;
 }
 
 .navbar-login-container > * {
@@ -26,8 +33,8 @@
 
 .navbar-login-success-container {
     display: flex;
-    padding: 0 1.2rem;
     justify-content: space-around;
+    align-items: center;
 }
 
 .navbar-login-success-container > * {
@@ -36,8 +43,21 @@
     margin: 0 1.2rem;
 }
 
+.navbar-user{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #999999;
+    padding: 1px 10px;
+    border-radius: 2rem;
+}
+
+.navbar-user > span>span{
+    color: #ffffff;
+}
+
 .navbar-user > span {
-    color: #999999;
+    color: #000000;
 }
 
 .navbar-register {
@@ -54,13 +74,30 @@
 
 .navbar-search-container > .navbar-search-input {
     width: 160px;
-    padding: 2px 6px 2px 24px;
+    height: 26px;
+    line-height: normal;
+    padding: 2px 6px 2px 28px;
     border-radius: 10px;
     outline: none;
+    border: none;
 }
 
 .navbar-search-container > .icon-search {
     position: relative;
     right: 154px;
     color: #242526;
+}
+
+.navbar-logout{
+    text-decoration: none;
+    color: #999;
+}
+
+.logo-user{
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;
+    margin-left: 10px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
 }

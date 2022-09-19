@@ -13,7 +13,7 @@ const Home = ()=>{
     });
     return(
         <div>
-            {user?.user.admin ?  (<AdminHomePage/>) : (<Link to={'/vocabulary'}>Vocabulary</Link>)}
+            {user?.user?.admin ?  (<AdminHomePage/>) : (<Link to={'/vocabulary'}>Vocabulary</Link>)}
         </div>
     )
 }

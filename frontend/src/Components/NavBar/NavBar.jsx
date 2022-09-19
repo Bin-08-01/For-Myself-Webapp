@@ -18,16 +18,24 @@ const NavBar = () => {
     return (
         <nav className={'navbar-container'}>
             <div className={'navbar-home-container'}>
-                <Link to={'/'} className={'navbar-home'}>Home</Link>
+                <Link to={'/'} className={'navbar-home'}><i className="fa-sharp fa-solid fa-house"></i>Home</Link>
+                <Link to={'/blog'}>Blog</Link>
+                <Link to={'/vocabulary'}>Vocabulary</Link>
             </div>
                 {user ? (
                     <div className="navbar-login-success-container">
                         <div className="navbar-search-container">
-                            <input type="search" className={"navbar-search-input"}/>
+                            <input type="search" placeholder={"Search anything ..."} className={"navbar-search-input"}/>
                             <i className="fa-solid fa-magnifying-glass icon-search"></i>
                         </div>
-                        <p className={"navbar-user"}>Hi, <span>{user.username}</span></p>
+                        <Link to={'/profile'} className={"navbar-user"}>
+
+                            <span><span>Hi, </span>{user.fullname ? user.fullname : user.username}</span>
+                            <img src={user.urlImage} alt="" className={"logo-user"}/>
+
+                        </Link>
                         <Link to={'/logout'} className={"navbar-logout"} onClick={handleLogout}>Logout</Link>
+
                     </div>
                 ) : (
                     <div className="navbar-login-container">

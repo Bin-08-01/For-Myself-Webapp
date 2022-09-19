@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate, useSearchParams} from "react-router-dom";
-import {deleteVocabulary, findVocabulary, getAllVocabulary} from "../../../../Redux/apiVocabularyRequest";
+import {deleteVocabulary, findVocabulary, getAllVocabulary} from "../../Redux/apiVocabularyRequest";
 import {useEffect} from "react";
 import './style.css';
 
