@@ -3,6 +3,40 @@ table, th, tr, td{
 }
 
 table{
+    border: 3px solid #000;
+
+}
+
+th{
+    font-weight: 600;
+    text-align: center;
+    border: 3px solid #000;
+}
+
+td{
+    padding-left: 10px;
+}
+
+.stt{
+    text-align: center;
+    padding: 0;
+}
+
+.edit-feature{
+    text-align: center;
+    color: royalblue;
+    font-weight: 600;
+    padding: 0;
+}
+
+.delete-feature{
+    text-align: center;
+    color: red;
+    font-weight: 600;
+    padding: 0;
+}
+
+table{
     width: 100%;
     border-collapse: collapse;
 }

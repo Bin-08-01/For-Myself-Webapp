@@ -4,7 +4,7 @@ const VocabularyController = {
     getAllWords: async (req, res) => {
         try{
             const idUser = req.body.idUser;
-            const allVocabularies = await Vocabulary.find({language: req.params.language, idUser});
+            const allVocabularies = await Vocabulary.find({language: req.params.language, idUser}).sort({original: 1});
             res.status(200).json({allVocabularies, idUser});
         }catch(err){
             res.status(500).json(err);

@@ -16,13 +16,17 @@ const AddVocabulary = () => {
     const idWord = searchParams.get('id');
     const language = searchParams.get('language');
 
+    const upcaseFirstLetter = (str)=>{
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const newVocabulary = {
             language: language,
-            original: original,
-            translate: translate,
-            description: description,
+            original: upcaseFirstLetter(original),
+            translate: upcaseFirstLetter(translate),
+            description: upcaseFirstLetter(description),
             idUser: idUser,
         }
         if(!idWord){
