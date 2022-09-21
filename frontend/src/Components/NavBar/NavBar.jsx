@@ -30,7 +30,7 @@ const NavBar = () => {
                         </div>
                         <Link to={'/profile'} className={"navbar-user"}>
 
-                            <span><span>Hi, </span>{user.fullname ? user.fullname : user.username}</span>
+                            <span><span>Hi, </span>{user.fullname || user.username}</span>
                             <img src={user.urlImage} alt="" className={"logo-user"}/>
 
                         </Link>

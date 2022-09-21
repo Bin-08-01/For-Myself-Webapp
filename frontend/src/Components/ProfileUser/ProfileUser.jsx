@@ -5,7 +5,7 @@ import {useState} from "react";
 const ProfileUser = () => {
     const raw = useSelector(state => state?.auth.login.currentUser);
     const user = raw?.user;
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState(<div>Image Helloooooo</div>);
     const handleChangeAvatar = (event) => {
         const reader = new FileReader()
         console.log(event.target.files[0]);
@@ -36,7 +36,7 @@ const ProfileUser = () => {
                         <input type="file" hidden={true} onChange={(e) => handleChangeAvatar(e)}/>
                     </label>
                     <div className="ovewview-username-container hover-show-edit">
-                        <h3>{user.fullname}<i className="fa-solid fa-pen wait-hover-edit"></i></h3>
+                        <h3>{user.fullname || user.username}<i className="fa-solid fa-pen wait-hover-edit"></i></h3>
                         <span>Username: {user.username}</span>
                     </div>
                 </div>
