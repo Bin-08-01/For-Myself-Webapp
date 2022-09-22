@@ -43,5 +43,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3107/"
+  "proxy": "http://localhost:3107/",
+  "proxy1": "https://myapp-react-api.herokuapp.com/"
 }

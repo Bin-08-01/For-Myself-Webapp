@@ -1,13 +1,14 @@
 import {useNavigate, useSearchParams} from "react-router-dom";
 import "./style.css";
 import {useDispatch, useSelector} from "react-redux";
-import {addVocabulary, findVocabulary, updateVocabulary} from "../../Redux/apiVocabularyRequest";
+import {addVocabulary, updateVocabulary} from "../../Redux/apiVocabularyRequest";
 import {useState} from "react";
 
 const AddVocabulary = () => {
     const [original, setOriginal] = useState("");
     const [translate, setTranslate] = useState("");
     const [description, setDescription] = useState("");
+    const [wordType, setWordType] = useState("");
     const [searchParams] = useSearchParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -20,9 +21,16 @@ const AddVocabulary = () => {
         e.preventDefault();
         const newVocabulary = {
             language: language,
+<<<<<<< Updated upstream
             original: original,
             translate: translate,
             description: description,
+=======
+            original: upcaseFirstLetter(original),
+            wordType: wordType,
+            translate: upcaseFirstLetter(translate),
+            description: upcaseFirstLetter(description),
+>>>>>>> Stashed changes
             idUser: idUser,
         }
         if(!idWord){
@@ -35,9 +43,19 @@ const AddVocabulary = () => {
         <div className={"add-vocabulary-container"}>
             <div className={"form-add-vocabulary-container"}>
                 <form onSubmit={handleSubmit} className={"form-add-vocabulary"}>
-                    <h1 className={"title-form"}>{idWord ? ("Edit") : (`Add Vocabulary ${searchParams.get('language')}`)}</h1>
+                    <h1 className={"title-form"}>{idWord ? ("Edit") : (`Add ${searchParams.get('language')}`)}</h1>
                     <p>Original</p>
                     <input type="text" onChange={e => setOriginal(e.target.value)} placeholder={idWord?(`${vocabulary.original}`):("Original")}/>
+                    <p>Word Type</p>
+                    <select name="wordType" id="word-type-select" onChange={(e)=>setWordType(e.target.value)}>
+                        <option value="">--Select--</option>
+                        <option value="adj">Adjective</option>
+                        <option value="adv">Adverb</option>
+                        <option value="conj">Conjunctions</option>
+                        <option value="n">Noun</option>
+                        <option value="pre">Prepositions</option>
+                        <option value="v">Verb</option>
+                    </select>
                     <p>Translate</p>
                     <input type="text" name={'translate'} onChange={e => setTranslate(e.target.value)} placeholder={idWord?(`${vocabulary.translate}`):("Translated")}/>
                     <p>Description</p>

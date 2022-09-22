@@ -15,7 +15,7 @@ import axios from "axios";
 export const getAllVocabulary = async (language, dispatch, idUser) => {
     dispatch(getAllVocabularyStart());
     try{
-        const data = await axios.post(`http://localhost:3107/v2/language/view/${language}`, {idUser: idUser});
+        const data = await axios.post(`/v2/language/view/${language}`, {idUser: idUser});
         dispatch(getAllVocabularySuccess(data.data));
     }catch (err){
         dispatch(getAllVocabularyFailed());

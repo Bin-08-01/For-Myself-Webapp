@@ -26,6 +26,7 @@ const VocabularyController = {
             const newVocabulary = await new Vocabulary({
                 language: req.params.language,
                 original: req.body.original,
+                wordType: req.body.wordType,
                 translate: req.body.translate,
                 description: req.body.description,
                 idUser: req.body.idUser,
