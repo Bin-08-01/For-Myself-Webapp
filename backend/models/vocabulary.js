@@ -6,13 +6,13 @@ const vocabularySchema = new mongoose.Schema({
         require: true,
     },
 
-    original:{
+    original: {
         type: String,
         require: true,
         unique: true,
     },
 
-    translate:{
+    translate: {
         type: String,
         require: true,
     },
@@ -24,6 +24,15 @@ const vocabularySchema = new mongoose.Schema({
     marked: {
         type: Boolean,
         default: false
+    },
+
+    wordType: {
+        type: String,
+        default: "",
+    },
+
+    group: {
+        type: String,
     },
 
     idUser: {
