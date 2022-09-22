@@ -17,20 +17,18 @@ const AddVocabulary = () => {
     const idWord = searchParams.get('id');
     const language = searchParams.get('language');
 
+    const upcaseFirstLetter = (str)=>{
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const newVocabulary = {
             language: language,
-<<<<<<< Updated upstream
-            original: original,
-            translate: translate,
-            description: description,
-=======
             original: upcaseFirstLetter(original),
             wordType: wordType,
             translate: upcaseFirstLetter(translate),
             description: upcaseFirstLetter(description),
->>>>>>> Stashed changes
             idUser: idUser,
         }
         if(!idWord){

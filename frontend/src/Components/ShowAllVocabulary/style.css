@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 .show-all-vocabulary-container {
     position: absolute;
     transform: translateX(-50%);
@@ -20,6 +19,7 @@
 }
 
 .main-show-all-vocabulary-container > .title {
+
     text-align: center;
 }
 
@@ -35,6 +35,7 @@
 }
 
 .main-show-all-vocabulary-container > .feature-container > .button-add {
+
     text-decoration: none;
     padding: 4px 16px;
     background-color: #999999;
@@ -61,4 +62,3 @@ td.td-wordtype{
     text-align: center;
     padding: 0;
 }
->>>>>>> Stashed changes
