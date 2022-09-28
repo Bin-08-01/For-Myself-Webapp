@@ -12,6 +12,10 @@
     border-radius: 20px;
 }
 
+.form-add-vocabulary{
+    margin-bottom: 20px;
+}
+
 .form-add-vocabulary>.title-form{
     font-weight: 600;
 }
