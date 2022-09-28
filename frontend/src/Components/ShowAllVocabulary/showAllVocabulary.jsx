@@ -31,9 +31,12 @@ const ShowAllVocabulary = () => {
     }
 
     const handleDelete = (e) => {
-        const id = e.target.id;
-        navigate('/delete');
-        deleteVocabulary(dispatch, navigate, id, language);
+        const choose = window.confirm('Are you sure?');
+        if(choose){
+            const id = e.target.id;
+            navigate('/delete');
+            deleteVocabulary(dispatch, navigate, id, language);
+        }
     }
 
     const handleShowDetail = (id)=>{
