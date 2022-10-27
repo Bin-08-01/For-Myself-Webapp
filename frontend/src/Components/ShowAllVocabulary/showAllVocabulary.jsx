@@ -24,6 +24,10 @@ const ShowAllVocabulary = () => {
     }, [searchParams.get('language'), dispatch, idUser, searchParams]);
     const x = useSelector(state => state.vocabulary.vocabulary.allVocabulary?.allVocabularies);
 
+    const setLanguageVoice = (language) =>{
+        return language.charAt(0)+language.charAt(1)+'-'+language.charAt(0).toUpperCase()+language.charAt(1).toUpperCase();
+    }
+
     const handleEdit = (e) => {
         const id = e.target.id;
         findVocabulary(dispatch, id);
@@ -42,6 +46,14 @@ const ShowAllVocabulary = () => {
     const handleShowDetail = (id)=>{
         setCheckShowDetail(!checkShowDetail);
         setIdVocaSelect(id);
+    }
+
+
+    const handleVoice = (word)=>{
+        const msg = new SpeechSynthesisUtterance();
+        msg.lang = setLanguageVoice(language);
+        msg.text = word;
+        window.speechSynthesis.speak(msg);
     }
 
     return (
@@ -78,7 +90,10 @@ const ShowAllVocabulary = () => {
                                 return (
                                     <tr className={eachs._id} key={eachs._id}>
                                         <td className={"stt"}>{stt++}</td>
-                                        <td><span onClick={()=>{handleShowDetail(eachs._id)}}>{eachs.original}</span></td>
+                                        <td>
+                                            <span onClick={()=>{handleShowDetail(eachs._id)}}>{eachs.original}</span>
+                                            <span onClick={e=>handleVoice(eachs.original)}><h5>Listen</h5></span>
+                                        </td>
                                         <td className={"td-wordtype"}><p>{eachs.wordType ? (`(${eachs.wordType})`) : "" }</p></td>
                                         <td><p>{eachs.translate}</p></td>
                                         <td></td>
