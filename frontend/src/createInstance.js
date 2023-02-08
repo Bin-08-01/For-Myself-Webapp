@@ -1,7 +1,7 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-const refreshToken = async () =>{
+const refreshToken = async () => {
     try {
         const res = await axios.post("http://localhost:3107/v1/auth/refresh", {
             withCredentials: true,

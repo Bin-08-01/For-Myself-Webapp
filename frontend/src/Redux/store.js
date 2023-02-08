@@ -19,6 +19,7 @@ const persistConfig = {
     version: 1,
     storage,
 };
+
 const rootReducer = combineReducers({ auth: authReducer, vocabulary: vocabularyReducer, users: userReducer });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

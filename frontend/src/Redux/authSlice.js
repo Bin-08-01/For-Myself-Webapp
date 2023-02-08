@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
     name: "auth",
@@ -58,12 +58,12 @@ const authSlice = createSlice({
             state.login.currentUser = null;
             state.login.msg = action.payload;
         },
-        logoutStart: (state)=>{
+        logoutStart: (state) => {
             state.login.isFetching = true;
         },
-        logoutSuccess: state=>{
+        logoutSuccess: state => {
             state.login.isFetching = false;
-            state.login.currentUser =  null;
+            state.login.currentUser = null;
             state.login.error = false;
         },
         logoutFailed: state => {

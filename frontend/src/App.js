@@ -1,6 +1,6 @@
 import './App.css';
 import Home from "./Components/Home/Home";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./Components/NavBar/NavBar";
 import Login from "./Components/Login/Login";
 import RegisterPage from "./Components/Register/Register";
@@ -13,18 +13,18 @@ function App() {
   return (
     <Router>
       <NavBar />
-        <div className="App">
-            <Routes>
-                <Route path={'/'} element={<Home/>}/>
-                <Route path={'/login'} element={<Login/>}/>
-                <Route path={'/register'} element={<RegisterPage/>}/>
-                <Route path={'/vocabulary'} element={<VocabularyPage/>}/>
-                <Route path={'/view'} element={<ShowAllVocabulary/>}/>
-                <Route path={'/add'} element={<AddVocabulary/>}/>
-                <Route path={'/edit'} element={<AddVocabulary/>}/>
-                <Route path={'/profile'} element={<ProfileUser/>}/>
-            </Routes>
-        </div>
+      <div className="App">
+        <Routes>
+          <Route path={'/'} element={<Home />} />
+          <Route path={'/login'} element={<Login />} />
+          <Route path={'/register'} element={<RegisterPage />} />
+          <Route path={'/vocabulary'} element={<VocabularyPage />} />
+          <Route path={'/view'} element={<ShowAllVocabulary />} />
+          <Route path={'/add'} element={<AddVocabulary />} />
+          <Route path={'/edit'} element={<AddVocabulary />} />
+          <Route path={'/profile'} element={<ProfileUser />} />
+        </Routes>
+      </div>
     </Router>
   );
 }

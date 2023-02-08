@@ -57,18 +57,18 @@ export const getAllUsers = async (accessToken, dispatch, axiosJWT) => {
     try {
         const res = await axios.get('/v1/user/all');
         dispatch(getUsersSuccess(res.data));
-    }catch (err){
+    } catch (err) {
         dispatch(getUsersFailed());
     }
 };
 
-export const deleteUser = async (dispatch, navigate, id, axiosJWT)=>{
+export const deleteUser = async (dispatch, navigate, id, axiosJWT) => {
     dispatch(deleteUsersStart());
     try {
         await axios.delete(`/v1/user/delete/${id}`);
         dispatch(deleteUsersSuccess());
         navigate("/");
-    }catch (err){
+    } catch (err) {
         dispatch(deleteUsersFailed("Delete failed!"));
     }
 }
